@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shipment;
+use App\Models\ShipmentHistory;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ShipmentHistoryController extends Controller
 {
@@ -14,6 +17,8 @@ class ShipmentHistoryController extends Controller
     public function index()
     {
         //get all the shipment histories
+        $shipments = ShipmentHistory::all();
+        return Inertia::render('History/View', ['shipments' => $shipments]);
     }
 
     /**
@@ -23,7 +28,11 @@ class ShipmentHistoryController extends Controller
      */
     public function create()
     {
-        //
+        //get all the shipment and display a create page
+        $shipments = Shipment::all();
+        return Inertia::render('History/Create', [
+            'shipments' => $shipments
+        ]);
     }
 
     /**
@@ -34,7 +43,9 @@ class ShipmentHistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // store the history
+        $shipment = ShipmentHistory::create($request->all());
+        return back()->with('message', 'Shipment Created');
     }
 
     /**
@@ -56,7 +67,9 @@ class ShipmentHistoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        //edit all the histories
+        $shipment = ShipmentHistory::where('id', $id)->first();
+        return Inertia::render('Edit', ['shipment' => $shipment]);
     }
 
     /**
@@ -68,7 +81,9 @@ class ShipmentHistoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $shipment = ShipmentHistory::where('id', $id)->first();
+        $shipment->update($request->all());
+        return redirect()->route('shipment.index')->with('message', 'Shipment Updated Successfully');
     }
 
     /**
@@ -79,6 +94,10 @@ class ShipmentHistoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shipment = ShipmentHistory::where('id', $id)->first();
+        $shipment->delete();
+        sleep(1);
+
+        return redirect()->route('shipment.index')->with('message', 'Shipment Delete Successfully');
     }
 }
