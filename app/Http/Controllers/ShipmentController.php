@@ -99,7 +99,7 @@ class ShipmentController extends Controller
     }
     public function trackShipment($tracking_no)
     {
-        $shipment = Shipment::where('tracking_no', $tracking_no)->first();
+        $shipment = Shipment::with('history')->where('tracking_no', $tracking_no)->first();
         if ($shipment) {
             return Inertia::render('Shipment', ['shipment' => $shipment]);
         } else {

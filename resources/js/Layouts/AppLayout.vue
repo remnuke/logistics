@@ -58,6 +58,12 @@ const logout = () => {
                                 <NavLink :href="route('shipment.create')" :active="route().current('shipment.create')">
                                     Create Shipment
                                 </NavLink>
+                                <NavLink :href="route('history.index')" :active="route().current('history.index')">
+                                    View Shipment History
+                                </NavLink>
+                                <NavLink :href="route('history.create')" :active="route().current('history.create')">
+                                    Create Shipment History
+                                </NavLink>
                             </div>
                         </div>
 
@@ -222,6 +228,12 @@ const logout = () => {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('shipment.create')" :active="route().current('shipment.create')">
                             Create Shipment
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('history.create')" :active="route().current('history.create')">
+                            Create Shipment History
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('history.index')" :active="route().current('history.index')">
+                            View Shipment Histories
                         </ResponsiveNavLink>
                     </div>
 

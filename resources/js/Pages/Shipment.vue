@@ -22,7 +22,6 @@
     
     <template>
         <FrontLayout title="Shipment">
-
             <!-- Start block -->
             <section class="bg-white">
                 <div class="grid max-w-screen-xl px-4 pt-20 pb-1 mx-auto lg:gap-8 lg:grid-cols-2 lg:pt-28">
@@ -216,23 +215,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr v-for="history in props.shipment.history" :key="history.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Apple MacBook Pro 17"
+                                        {{history.date}}
                                     </th>
                                     <td class="py-4 px-6">
-                                        Sliver
+                                        {{history.time}}
                                     </td>
                                     <td class="py-4 px-6">
-                                        Laptop
+                                        {{history.location}}
                                     </td>
                                     <td class="py-4 px-6">
-                                        $2999
+                                        {{history.status}}
                                     </td>
                                     <td class="py-4 px-6">
-                                        
+                                        {{history.remarks}}
                                     </td>
-                                </tr> -->
+                                </tr>
                                
                             </tbody>
                         </table>

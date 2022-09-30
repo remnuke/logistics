@@ -56,6 +56,6 @@ class Shipment extends Model
 
     public function history()
     {
-        return $this->hasMany(ShipmentHistory::class);
+        return $this->hasMany(ShipmentHistory::class, 'shipment_id');
     }
 }

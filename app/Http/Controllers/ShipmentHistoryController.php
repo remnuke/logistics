@@ -17,7 +17,7 @@ class ShipmentHistoryController extends Controller
     public function index()
     {
         //get all the shipment histories
-        $shipments = ShipmentHistory::all();
+        $shipments = ShipmentHistory::with('shipment')->get();
         return Inertia::render('History/View', ['shipments' => $shipments]);
     }
 
@@ -45,7 +45,7 @@ class ShipmentHistoryController extends Controller
     {
         // store the history
         $shipment = ShipmentHistory::create($request->all());
-        return back()->with('message', 'Shipment Created');
+        return back()->with('message', 'History Created');
     }
 
     /**
@@ -98,6 +98,6 @@ class ShipmentHistoryController extends Controller
         $shipment->delete();
         sleep(1);
 
-        return redirect()->route('shipment.index')->with('message', 'Shipment Delete Successfully');
+        return redirect()->route('history.index')->with('message', 'Shipment Delete Successfully');
     }
 }

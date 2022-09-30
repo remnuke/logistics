@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\ShipmentHistoryController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,7 @@ Route::get('/', function () {
 Route::get('track', [ShipmentController::class, 'track'])->name('track');
 Route::get('track/shipment/{tracking_no}', [ShipmentController::class, 'trackShipment'])->name('track.shipment');
 Route::resource('shipment', ShipmentController::class);
+Route::resource('history', ShipmentHistoryController::class);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
