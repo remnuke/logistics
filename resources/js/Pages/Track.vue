@@ -1,7 +1,8 @@
 <script setup>
     import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
     import FrontLayout from '../Layouts/FrontLayout.vue';
-    
+    import Swal from 'sweetalert2'
+
     const props = defineProps({
         shipment: Object
     });
@@ -9,9 +10,35 @@
         tracking_no:''
     })
     let errorOnPage = false;
+    const checkMessage = (status, message) => {
+      if (status == 'error') {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: status,
+          title: message,
+        });
+      
+      }
+    }
     const track = (tracking_no) =>{
         form.get(route('track.shipment', {'tracking_no':tracking_no}),
         {
+            onSuccess: (res) =>  {if(res.props.flash.error == null){
+                checkMessage('success', res.props.flash.message);
+            }else{
+                checkMessage('error', res.props.flash.error);
+            }},
             onError: function(){errorOnPage = true}
 
         })
@@ -33,9 +60,6 @@
                             <input type="text" name="tracking" v-model="form.tracking_no" id="" placeholder="Tracking ID" class="border-gray-300 p-4 rounded-l-xl">
                             <button class="text-white bg-red-600 rounded-r-xl p-4 font-bold text-lg">Track Shipment</button>
                             </form>
-                            <small v-if="errorOnPage" class="text-sm text-red-400">
-                                Tracking Number does not exist.
-                            </small>
                         </div>
                     </div>
                     <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">

@@ -103,7 +103,7 @@ class ShipmentController extends Controller
         if ($shipment) {
             return Inertia::render('Shipment', ['shipment' => $shipment]);
         } else {
-            return back()->withErrors('Tracking Number does not exist');
+            return back()->with('error', 'Shipment does not exist');
         }
     }
     function generateRandomString($length = 10)
@@ -115,5 +115,13 @@ class ShipmentController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+    public function blog()
+    {
+        return Inertia::render('Blog');
+    }
+    public function about()
+    {
+        return Inertia::render('About');
     }
 }

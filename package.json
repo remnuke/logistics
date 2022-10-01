@@ -21,6 +21,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "vue-sweetalert2": "^5.0.5",
         "vue3-barcode": "^1.0.1"
     }
 }

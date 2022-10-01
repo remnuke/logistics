@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\ShipmentHistoryController;
 use Illuminate\Foundation\Application;
@@ -24,11 +25,15 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 Route::get('track', [ShipmentController::class, 'track'])->name('track');
 Route::get('track/shipment/{tracking_no}', [ShipmentController::class, 'trackShipment'])->name('track.shipment');
+Route::resource('contact', ContactController::class);
 Route::resource('shipment', ShipmentController::class);
 Route::resource('history', ShipmentHistoryController::class);
+Route::get('blog', [ShipmentController::class, 'blog'])->name('blog');
+Route::get('about', [ShipmentController::class, 'about'])->name('about');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
