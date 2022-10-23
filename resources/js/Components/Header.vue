@@ -10,7 +10,7 @@
     </script>
 <template>
     <header class="fixed w-full">
-        <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+        <nav class="bg-white border-gray-200 py-2.5 dark:bg-transparent">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                 <a href="/" class="flex items-center">
                     <img src="../../../public/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Perfectways Logo" />

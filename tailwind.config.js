@@ -15,6 +15,10 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'header-bg':"url('/images/bg-plane.jpg')"
+                
+            }
         },
     },
 
