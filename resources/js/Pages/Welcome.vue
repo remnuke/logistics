@@ -172,7 +172,7 @@ const track = (tracking_no) =>{
           </section>
         <!-- End block -->
         <!-- Start block -->
-        <section class="bg-white dark:bg-gray-900">
+        <section class="bg-middle-bg bg-no-repeat bg-cover">
             <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
                 <div class="col-span-2 mb-8">
                     <p class="text-lg font-medium text-red-600 dark:text-red-500">Trusted Worldwide</p>
@@ -310,7 +310,7 @@ const track = (tracking_no) =>{
         </section>
         <!-- End block -->
         <!-- Start block -->
-        <section class="bg-gray-50 dark:bg-gray-800">
+        <section class="bg-footer-bg bg-no-repeat bg-cover bg-top">
             <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
                 <div class="max-w-screen-sm mx-auto text-center">
                     <h2 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">Track your deliveries fast and easy</h2>
